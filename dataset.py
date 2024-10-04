@@ -1,6 +1,6 @@
 """
 This module interprets the custom-defined raw-MNIST files that are expected to be in an adjacent directory
-named "dataset", and crucially defines a torch.Dataset subclass for accessing the data. Luckily, there's
+named "raw-dataset", and crucially defines a torch.Dataset subclass for accessing the data. Luckily, there's
 a library ('mnist') someone else made that largely does the heavy lifting of interpreting the MNIST files' 
 custom file layout which this module uses.
 """
@@ -13,7 +13,7 @@ import torch
 
 class MNISTDataset(torch.utils.data.Dataset):
     
-    raw_dataset_dir = Path(__file__).parent / "dataset"
+    raw_dataset_dir = Path(__file__).parent / "raw-dataset"
     # All of the images are 28x28 pixels.
     image_dimensions = (28, 28)
 

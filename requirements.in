@@ -1,4 +1,5 @@
 ipdb
 numpy
+pip-tools
 python-mnist
 torch
