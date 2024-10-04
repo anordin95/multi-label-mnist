@@ -1,7 +1,9 @@
-"""This module interprets the custom-defined raw-MNIST files that are expected to be in an adjacent directory
+"""
+This module interprets the custom-defined raw-MNIST files that are expected to be in an adjacent directory
 named "dataset", and crucially defines a torch.Dataset subclass for accessing the data. Luckily, there's
 a library ('mnist') someone else made that largely does the heavy lifting of interpreting the MNIST files' 
-custom file layout which this module uses."""
+custom file layout which this module uses.
+"""
 
 from pathlib import Path
 
