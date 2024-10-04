@@ -1,15 +1,17 @@
 """This module interprets the custom-defined raw-MNIST files that are expected to be in an adjacent directory
-named "dataset", and crucially defines a torch.Dataset subclass for accessing the data."""
+named "dataset", and crucially defines a torch.Dataset subclass for accessing the data. Luckily, there's
+a library ('mnist') someone else made that largely does the heavy lifting of interpreting the MNIST files' 
+custom file layout which this module uses."""
 
 from pathlib import Path
 
 from mnist import MNIST as MNIST_DatasetParser
 import numpy as np
+import torch
 
-
-class MNISTDataset:
+class MNISTDataset(torch.utils.data.Dataset):
     
-    raw_dataset_dir = Path(__file__) / "dataset"
+    raw_dataset_dir = Path(__file__).parent / "dataset"
     # All of the images are 28x28 pixels.
     image_dimensions = (28, 28)
 
@@ -22,7 +24,7 @@ class MNISTDataset:
         assert split in ["train", "test"], f"split must be either 'train' or 'test', but received split: {split}."
         self.split = split 
         
-        mnist_dataset_parser = MNIST_DatasetParser(path="dataset")
+        mnist_dataset_parser = MNIST_DatasetParser(path=self.raw_dataset_dir)
         
         if self.split == 'train':
             images, labels = mnist_dataset_parser.load_training()
@@ -41,6 +43,3 @@ class MNISTDataset:
         image = self.images[idx]
         label = self.labels[idx]
         return (image, label)
-
-mnist_dataset_train = MNISTDataset(split="train")
-img, label = mnist_dataset_train[6]
