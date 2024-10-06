@@ -25,8 +25,15 @@ class ConvStackModel(torch.nn.Module):
         for conv_layer in self.conv_stack:
             hidden_layer_repr = conv_layer(hidden_layer_repr)
         
+        if input_tensor.shape[0] == 1:
+            # The batch-dimension is either not present or is 1, so it's safe to flatten entirely.
+            flattened_hidden_layer_repr = hidden_layer_repr.flatten(start_dim=0)
+        else:
+            # Flatten all dimensions except for the batch-dimension.
+            flattened_hidden_layer_repr = hidden_layer_repr.flatten(start_dim=1)
+
         # Also known as the pre-activations (i.e. values before an activation function).
-        logits = self.fc_layer(hidden_layer_repr.flatten(start_dim=1))
+        logits = self.fc_layer(flattened_hidden_layer_repr)
         
         # It's more common to use a softmax activation for a multi-class classification, but I'm intentionally
         # choosing a per-class sigmoid instead to allow this architecture to easily generalize to multi-label
