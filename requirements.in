@@ -1,4 +1,5 @@
 ipdb
+jupyter
 numpy
 pip-tools
 python-mnist
