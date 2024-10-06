@@ -35,7 +35,8 @@ class MNISTDataset(torch.utils.data.Dataset):
         
         self.dataset_size = len(labels)
         
-        self.images = np.array(images).reshape(self.dataset_size, *self.image_dimensions)
+        # The 1 is included for the channel-dimension. It's 1 since the images are grayscale i.e. black & white.
+        self.images = np.array(images).reshape(self.dataset_size, 1, *self.image_dimensions)
         self.labels = np.array(labels)
 
     def __len__(self):
@@ -44,4 +45,4 @@ class MNISTDataset(torch.utils.data.Dataset):
     def __getitem__(self, idx):
         image = self.images[idx]
         label = self.labels[idx]
-        return (image, label)
+        return (torch.tensor(image, dtype=torch.float32), torch.tensor(label))
