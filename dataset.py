@@ -1,8 +1,7 @@
 """
 This module interprets the custom-defined raw-MNIST files that are expected to be in an adjacent directory
 named "raw-dataset", and crucially defines a torch.Dataset subclass for accessing the data. Luckily, there's
-a library ('mnist') someone else made that largely does the heavy lifting of interpreting the MNIST files' 
-custom file layout which this module uses.
+a library ('mnist') someone else made that largely does the heavy lifting of interpreting the raw-MNIST files.
 """
 
 from pathlib import Path

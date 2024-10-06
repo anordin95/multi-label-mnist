@@ -1,5 +1,6 @@
 ipdb
 jupyter
+matplotlib
 numpy
 pip-tools
 python-mnist
