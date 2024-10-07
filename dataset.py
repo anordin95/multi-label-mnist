@@ -35,7 +35,7 @@ class MNISTDataset(torch.utils.data.Dataset):
         self.dataset_size = len(labels)
         
         # The 1 is included for the channel-dimension. It's 1 since the images are grayscale i.e. black & white.
-        self.images = np.array(images).reshape(self.dataset_size, 1, *self.image_dimensions)
+        self.images = np.array(images).reshape(self.dataset_size, 1, *self.image_dimensions, order='C')
         self.labels = np.array(labels)
 
     def __len__(self):
