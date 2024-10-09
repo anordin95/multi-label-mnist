@@ -15,3 +15,9 @@ The repository is moderately well commented, but it's likely you'll need to refe
 **Model**: The model or architecture is defined in `model.py`. This defines the overall function we'll be using to map from images to numbers. You can think of it as a more complex cousin of a linear regression model.
 
 **Training**: Training is handled in `train.ipynb`. This is the process of modifying the weights in the model (or function) to do what we want. In this case, we show the model a bunch of example images (also known as a batch) and tell the model what those images should be classified as. 
+
+**Evaluation**: Evaluation is handled in `evaluation.ipynb`. We seek to determine how well our learned black-box generalizes to unseen data (i.e. the test-set).
+
+![](raw-dataset/confusion_matrix.png.png)
+
+Here's the confusion matrix one of the models I trained achieved.
