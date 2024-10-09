@@ -18,6 +18,7 @@ The repository is moderately well commented, but it's likely you'll need to refe
 
 **Evaluation**: Evaluation is handled in `evaluation.ipynb`. We seek to determine how well our learned black-box generalizes to unseen data (i.e. the test-set).
 
-![](raw-dataset/confusion_matrix.png.png)
-
 Here's the confusion matrix one of the models I trained achieved.
+In this case, the model appears to fairly commonly confuse 5's and 3's as well as
+9's and 4's.
+![](raw-dataset/confusion_matrix.png)
